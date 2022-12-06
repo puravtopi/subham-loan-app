@@ -382,6 +382,61 @@ namespace WebApi.Services.Implementation
             }
             return _response;
         }
+
+        public ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int LoanId, int FolderId)
+        {
+            ServiceResponse<List<LoanBasicVM>> _response = new ServiceResponse<List<LoanBasicVM>>();
+            try
+            {
+                var _objBranch = _dbContext.TblLoanMsts
+                   .Include(x => x.Borrower)
+                   .Include(x => x.Milestone)
+                   .Include(x => x.Folder)
+                   .Include(x => x.SubFolder)
+                   .Include(x => x.Stage)
+                   .Where(x => x.LoanId == LoanId && x.FolderId== FolderId).ToList();
+
+                var _listLoan = new List<LoanBasicVM>();
+
+                foreach (var item in _objBranch)
+                {
+                    var _objLoanVM = new LoanBasicVM()
+                    {
+                        CustomerName = "",
+                        Email = item.Borrower.Email,
+                        FirstName = item.Borrower.FirstName,
+                        FolderName = item.Folder.FolderName,
+                        Fthb = item.Fthb,
+                        LangInfo = item.Borrower.LangInfo,
+                        LastName = item.Borrower.LastName,
+                        LeadDate = item.LeadDate,
+                        LoanSource = item.LoanSource,
+                        LoanType = item.LoanType != null ? item.LoanType.Value : 0,
+                        Phone = item.Borrower.Phone,
+                        StageName = item.Stage.StageName,
+                        SubFolderName = item.SubFolder.SubFolderName,
+                        LoanId = item.LoanId
+
+                    };
+                    _listLoan.Add(_objLoanVM);
+                }
+
+                _response.Message = "Loan List";
+                _response.Success = true;
+                _response.Model = _listLoan;
+                _response.ErrorCode = "1";
+
+            }
+            catch(Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = null;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+                _commonService.SaveError(ex, "ServiceResponse<List<BranchMasterVM>> GetAllBranch(int cmpId)");
+            }
+            return _response;
+        }
         public ServiceResponse<CoBorrowerVM> GetCoBorrower(int loadId)
         {
             ServiceResponse<CoBorrowerVM> _response = new ServiceResponse<CoBorrowerVM>();

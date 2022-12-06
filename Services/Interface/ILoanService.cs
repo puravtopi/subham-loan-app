@@ -13,6 +13,8 @@ namespace WebApi.Services.Interface
 
         ServiceResponse<List<LoanBasicVM>> GetAllLoan(int tenantId);
 
+        ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int Loanid, int FolderId);
+
         ServiceResponse<LoanBasicVM> EditLoan(int loadId);
 
         ServiceResponse<CoBorrowerVM> ManageCoBorrower(CoBorrowerVM model);
