@@ -383,7 +383,7 @@ namespace WebApi.Services.Implementation
             return _response;
         }
 
-        public ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int LoanId, int FolderId)
+        public ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int TenantId, int FolderId)
         {
             ServiceResponse<List<LoanBasicVM>> _response = new ServiceResponse<List<LoanBasicVM>>();
             try
@@ -394,7 +394,7 @@ namespace WebApi.Services.Implementation
                    .Include(x => x.Folder)
                    .Include(x => x.SubFolder)
                    .Include(x => x.Stage)
-                   .Where(x => x.LoanId == LoanId && x.FolderId== FolderId).ToList();
+                   .Where(x => x.TenantId == TenantId && x.FolderId== FolderId).ToList();
 
                 var _listLoan = new List<LoanBasicVM>();
 

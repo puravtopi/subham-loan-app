@@ -47,9 +47,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("get-all-loan-by-folder")]
-        public IActionResult GetAllLoanByFolder(int LoanId,int FolderId)
+        public IActionResult GetAllLoanByFolder(int TenantId, int FolderId)
         {
-            var _result = _loanService.GetAllLoanByFolder(LoanId,FolderId);
+            var _result = _loanService.GetAllLoanByFolder(TenantId, FolderId);
             return Ok(_result);
         }
 
