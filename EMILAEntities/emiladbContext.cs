@@ -720,12 +720,12 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.DescEn)
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .HasColumnName("desc_en")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.DescSp)
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .HasColumnName("desc_sp")
                     .HasDefaultValueSql("'NULL'");
 
@@ -965,7 +965,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.Note)
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .HasColumnName("note")
                     .HasDefaultValueSql("'NULL'");
 
@@ -980,7 +980,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.TaskEn)
-                    .HasMaxLength(150)
+                    .HasMaxLength(500)
                     .HasColumnName("task_en")
                     .HasDefaultValueSql("'NULL'");
 
@@ -990,7 +990,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.TaskSp)
-                    .HasMaxLength(150)
+                    .HasMaxLength(500)
                     .HasColumnName("task_sp")
                     .HasDefaultValueSql("'NULL'");
 
@@ -998,11 +998,6 @@ namespace WebApi.EMILAEntities
                     .WithMany(p => p.TblLoanTasks)
                     .HasForeignKey(d => d.LoanId)
                     .HasConstraintName("FK_tbl_loan_tasks_tbl_loan_mst");
-
-                entity.HasOne(d => d.LoanNavigation)
-                    .WithMany(p => p.TblLoanTasks)
-                    .HasForeignKey(d => d.LoanId)
-                    .HasConstraintName("tbl_loan_tasks_ibfk_1");
 
                 entity.HasOne(d => d.Milestone)
                     .WithMany(p => p.TblLoanTasks)
@@ -1285,7 +1280,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.TaskEn)
-                    .HasMaxLength(150)
+                    .HasMaxLength(500)
                     .HasColumnName("task_en")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1295,7 +1290,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.TaskSp)
-                    .HasMaxLength(150)
+                    .HasMaxLength(500)
                     .HasColumnName("task_sp")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1418,12 +1413,12 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.DescEn)
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .HasColumnName("desc_en")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.DescSp)
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .HasColumnName("desc_sp")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1550,7 +1545,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.Note)
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .HasColumnName("note")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1565,7 +1560,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.TaskEn)
-                    .HasMaxLength(150)
+                    .HasMaxLength(500)
                     .HasColumnName("task_en")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1575,7 +1570,7 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.TaskSp)
-                    .HasMaxLength(150)
+                    .HasMaxLength(500)
                     .HasColumnName("task_sp")
                     .HasDefaultValueSql("'NULL'");
 

@@ -13,7 +13,7 @@ namespace WebApi.Services.Interface
 
         ServiceResponse<List<LoanBasicVM>> GetAllLoan(int tenantId);
 
-        ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int Loanid, int FolderId);
+        ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int TenantId, int FolderId);
 
         ServiceResponse<LoanBasicVM> EditLoan(int loadId);
 

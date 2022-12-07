@@ -20,7 +20,6 @@ namespace WebApi.EMILAEntities
         public string Note { get; set; }
 
         public virtual TblLoanMst Loan { get; set; }
-        public virtual TblTenantMaster LoanNavigation { get; set; }
         public virtual TblMilestone Milestone { get; set; }
         public virtual TblUserPersona Own { get; set; }
         public virtual TblStatus Status { get; set; }

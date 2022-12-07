@@ -15,7 +15,6 @@ namespace WebApi.ViewModel
         public string Phone { get; set; }
         public string Email { get; set; }
         public int? LoanType { get; set; }
-
         public int? LoanProg { get; set; }
         public string LoanSource { get; set; }
         public string Refferral { get; set; }

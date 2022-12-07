@@ -51,6 +51,16 @@ namespace WebApi.Services.Implementation
 
                 _dbContext.TblBorrowerMsts.Add(_objborrower);
                 _dbContext.SaveChanges();
+                              
+                model.FolderId = 1;
+
+                var _objTenantMileStone = _dbContext.TblTenantMilestones.Where(x => x.MilestonePos == 1 && x.TenantId == model.TenantId).FirstOrDefault();
+
+                if (_objTenantMileStone != null)
+                {
+                    model.MilestoneId = _objTenantMileStone.TenantMilestoneId;
+                }
+
 
                 var _objLoanMast = _mapper.Map<TblLoanMst>(model);
 
@@ -77,7 +87,7 @@ namespace WebApi.Services.Implementation
                 _dbContext.SaveChanges();
 
                 //add data into loan needs
-                var _listTasks = _dbContext.TblLoanTasks.ToList();
+                var _listTasks = _dbContext.TblTenantTasks.ToList();
 
                 var _listLoanTasks = new List<TblLoanTask>();
 
@@ -92,7 +102,7 @@ namespace WebApi.Services.Implementation
                 _dbContext.TblLoanTasks.AddRange(_listLoanTasks);
                 _dbContext.SaveChanges();
 
-
+                model.LoanId = _objLoanMast.LoanId;
                 _response.Message = "Loan Added Successfully.";
                 _response.Model = model;
                 _response.Success = true;
@@ -383,7 +393,7 @@ namespace WebApi.Services.Implementation
             return _response;
         }
 
-        public ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int LoanId, int FolderId)
+        public ServiceResponse<List<LoanBasicVM>> GetAllLoanByFolder(int TenantId, int FolderId)
         {
             ServiceResponse<List<LoanBasicVM>> _response = new ServiceResponse<List<LoanBasicVM>>();
             try
@@ -394,7 +404,7 @@ namespace WebApi.Services.Implementation
                    .Include(x => x.Folder)
                    .Include(x => x.SubFolder)
                    .Include(x => x.Stage)
-                   .Where(x => x.LoanId == LoanId && x.FolderId== FolderId).ToList();
+                   .Where(x => x.TenantId == TenantId && x.FolderId == FolderId).ToList();
 
                 var _listLoan = new List<LoanBasicVM>();
 
@@ -427,7 +437,7 @@ namespace WebApi.Services.Implementation
                 _response.ErrorCode = "1";
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _response.Message = "Sorry !! something went wronge";
                 _response.Model = null;
@@ -810,7 +820,7 @@ namespace WebApi.Services.Implementation
                         //TaskGroup = _mapper.Map<TaskGroupVM>(item.TaskGroup),
                         TaskGroupName = item.TaskGroup.GroupName,
                         TaskGroupId = item.TaskGroupId,
-                        DescSp = item.DescSp,                       
+                        DescSp = item.DescSp,
                         LoanId = item.LoanId.Value,
                         LoanneedsId = item.LoanneedsId,
                         Coordinating = item.Coordinating,

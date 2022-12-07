@@ -85,6 +85,12 @@ namespace WebApi.Helpers
             CreateMap<LoanNeedVM, TblLoanNeed>().ReverseMap();
             CreateMap<LoanTasksVM, TblLoanTask>().ReverseMap();
 
+            CreateMap<TblNeedsDefalt, TblTenantNeed>().ReverseMap();
+
+            CreateMap<TblTenantMilestone, TblLoanMilestone>().ReverseMap();
+            CreateMap<TblTenantNeed, TblLoanNeed>().ReverseMap();
+            CreateMap<TblTenantTask, TblLoanTask>().ReverseMap();
+
 
             CreateMap<UpdateRequest, Account>()
                 .ForAllMembers(x => x.Condition(

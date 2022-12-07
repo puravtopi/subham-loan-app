@@ -12,7 +12,6 @@ namespace WebApi.EMILAEntities
             TblBorrowerMsts = new HashSet<TblBorrowerMst>();
             TblCompanyMasters = new HashSet<TblCompanyMaster>();
             TblLoanMsts = new HashSet<TblLoanMst>();
-            TblLoanTasks = new HashSet<TblLoanTask>();
             TblTenantMilestones = new HashSet<TblTenantMilestone>();
             TblTenantNeeds = new HashSet<TblTenantNeed>();
             TblTenantTasks = new HashSet<TblTenantTask>();
@@ -28,7 +27,6 @@ namespace WebApi.EMILAEntities
         public virtual ICollection<TblBorrowerMst> TblBorrowerMsts { get; set; }
         public virtual ICollection<TblCompanyMaster> TblCompanyMasters { get; set; }
         public virtual ICollection<TblLoanMst> TblLoanMsts { get; set; }
-        public virtual ICollection<TblLoanTask> TblLoanTasks { get; set; }
         public virtual ICollection<TblTenantMilestone> TblTenantMilestones { get; set; }
         public virtual ICollection<TblTenantNeed> TblTenantNeeds { get; set; }
         public virtual ICollection<TblTenantTask> TblTenantTasks { get; set; }
