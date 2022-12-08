@@ -785,6 +785,111 @@ namespace WebApi.Services.Implementation
             return _response;
         }
 
+        public ServiceResponse<LoanTasksVM> AddTask(LoanTasksVM model)
+        {
+            ServiceResponse<LoanTasksVM> _response = new ServiceResponse<LoanTasksVM>();
+            try
+            {
+                var _objLoanTask = _mapper.Map<TblLoanTask>(model);
+                _dbContext.TblLoanTasks.Add(_objLoanTask);
+                _dbContext.SaveChanges();
+
+
+                _response.Message = "Task Added Successfully.";
+                _response.Model = model;
+                _response.Success = true;
+                _response.ErrorCode = "1";
+
+            }
+            catch (Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = model;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+
+                _commonService.SaveError(ex, "ServiceResponse<LoanTasksVM> AddTask(LoanTasksVM model)");
+            }
+            return _response;
+        }
+
+        public ServiceResponse<LoanTasksVM> EditTask(int LoanId)
+        {
+            ServiceResponse<LoanTasksVM> _response = new ServiceResponse<LoanTasksVM>();
+
+            try
+            {
+                //edit Task data
+
+                var _objTaskBasic = _dbContext.TblLoanTasks.Where(x => x.LoanId == LoanId).FirstOrDefault();
+
+                var _objTaskBasicVM = _mapper.Map<LoanTasksVM>(_objTaskBasic);
+
+                _objTaskBasicVM.Customer = _objTaskBasic.Customer;
+                _objTaskBasicVM.MilestoneId = _objTaskBasic.MilestoneId;
+                _objTaskBasicVM.MilestonePos = _objTaskBasic.MilestonePos;
+                _objTaskBasicVM.TaskGroupId = _objTaskBasic.TaskGroupId;
+                _objTaskBasicVM.StatusId = _objTaskBasic.StatusId;
+                _objTaskBasicVM.OwnId = _objTaskBasic.OwnId;
+                _objTaskBasicVM.TaskEn = _objTaskBasic.TaskEn;
+                _objTaskBasicVM.TaskSp = _objTaskBasic.TaskSp;
+                _objTaskBasicVM.Note = _objTaskBasic.Note;
+
+
+                _response.Message = "Task Details.";
+                _response.Model = _objTaskBasicVM;
+                _response.Success = true;
+                _response.ErrorCode = "1";
+
+            }
+            catch (Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = null;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+
+                _commonService.SaveError(ex, "ServiceResponse<LoanTasksVM> EditTask(int LoanId)");
+            }
+
+            return _response;
+        }
+
+        public ServiceResponse<LoanTasksVM> UpdateTask(LoanTasksVM model)
+        {
+            ServiceResponse<LoanTasksVM> _response = new ServiceResponse<LoanTasksVM>();
+
+            try
+            {
+                //update Task
+
+                var _objloantask = _dbContext.TblLoanTasks.Where(x => x.LoanId == model.LoanId && x.LoanTaskId == model.LoanTaskId).FirstOrDefault();
+
+                var _objLoanTask = _mapper.Map<TblLoanTask>(model);
+                _dbContext.TblLoanTasks.Update(_objLoanTask);
+                _dbContext.SaveChanges();
+
+
+
+                _response.Message = "Task Update Successfully.";
+                _response.Model = model;
+                _response.Success = true;
+                _response.ErrorCode = "1";
+
+            }
+            catch (Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = model;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+
+                _commonService.SaveError(ex, "ServiceResponse<LoanBasicVM> UpdateLoan(LoanBasicVM model)");
+            }
+
+            return _response;
+        }
+
         public ServiceResponse<List<LoanNeedVM>> GetAllNeeds(int loanId)
         {
             ServiceResponse<List<LoanNeedVM>> _response = new ServiceResponse<List<LoanNeedVM>>();
@@ -847,6 +952,118 @@ namespace WebApi.Services.Implementation
                 _response.ErrorCode = "0";
                 _commonService.SaveError(ex, "ServiceResponse<TenantTasksVM> GetById(int Id)");
             }
+            return _response;
+        }
+
+        public ServiceResponse<LoanNeedVM> AddNeeds(LoanNeedVM model)
+        {
+            ServiceResponse<LoanNeedVM> _response = new ServiceResponse<LoanNeedVM>();
+            try
+            {
+                var _objLoanNeed = _mapper.Map<TblLoanNeed>(model);
+                _dbContext.TblLoanNeeds.Add(_objLoanNeed);
+                _dbContext.SaveChanges();
+
+
+                _response.Message = "Need Added Successfully.";
+                _response.Model = model;
+                _response.Success = true;
+                _response.ErrorCode = "1";
+
+            }
+            catch (Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = model;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+
+                _commonService.SaveError(ex, "ServiceResponse<LoanNeedVM> AddNeeds(LoanNeedVM model)");
+            }
+            return _response;
+        }
+
+        public ServiceResponse<LoanNeedVM> EditNeeds(int loanId)
+        {
+            ServiceResponse<LoanNeedVM> _response = new ServiceResponse<LoanNeedVM>();
+
+            try
+            {
+                //edit Needs data
+
+                var _objneedBasic = _dbContext.TblLoanNeeds.Where(x => x.LoanId == loanId).FirstOrDefault();
+
+                var _objneedBasicVM = _mapper.Map<LoanNeedVM>(_objneedBasic);
+
+                _objneedBasicVM.Customer = _objneedBasic.Customer;
+                _objneedBasicVM.SectionId = _objneedBasic.SectionId;
+                _objneedBasicVM.SectionPos = _objneedBasic.SectionPos;
+                _objneedBasicVM.TaskGroupId = _objneedBasic.TaskGroupId;
+                _objneedBasicVM.StatusId = _objneedBasic.StatusId;
+                _objneedBasicVM.OwnId = _objneedBasic.OwnId;
+                _objneedBasicVM.NeedEn = _objneedBasic.NeedEn;
+                _objneedBasicVM.NeedSp = _objneedBasic.NeedSp;
+                _objneedBasicVM.Coordinating = _objneedBasic.Coordinating;
+                _objneedBasicVM.Tracking = _objneedBasic.Tracking;
+                _objneedBasicVM._3rdparty = _objneedBasic._3rdparty;
+                _objneedBasicVM.DescEn = _objneedBasic.DescEn;
+                _objneedBasicVM.DescSp = _objneedBasic.DescSp;
+                _objneedBasicVM.Sample = _objneedBasic.Sample;
+                _objneedBasicVM.Video = _objneedBasic.Video;
+
+
+
+
+                _response.Message = "Need Details.";
+                _response.Model = _objneedBasicVM;
+                _response.Success = true;
+                _response.ErrorCode = "1";
+
+            }
+            catch (Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = null;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+
+                _commonService.SaveError(ex, "ServiceResponse<LoanNeedVM> EditNeeds(int loanId)");
+            }
+
+            return _response;
+        }
+
+        public ServiceResponse<LoanNeedVM> UpdateNeeds(LoanNeedVM model)
+        {
+            ServiceResponse<LoanNeedVM> _response = new ServiceResponse<LoanNeedVM>();
+            try
+            {
+                //update Task
+
+                var _objloanneed = _dbContext.TblLoanTasks.Where(x => x.LoanId == model.LoanId && x.LoanTaskId == model.LoanneedsId).FirstOrDefault();
+
+                var _objLoanNeed = _mapper.Map<LoanNeedVM>(model);
+                _dbContext.TblLoanTasks.Update(_objloanneed);
+                _dbContext.SaveChanges();
+
+
+
+                _response.Message = "Need Update Successfully.";
+                _response.Model = model;
+                _response.Success = true;
+                _response.ErrorCode = "1";
+
+            }
+            catch (Exception ex)
+            {
+                _response.Message = "Sorry !! something went wronge";
+                _response.Model = model;
+                _response.Success = false;
+                _response.ErrorCode = "0";
+
+                _commonService.SaveError(ex, "ServiceResponse<LoanNeedVM> UpdateNeeds(LoanNeedVM model)");
+            }
+
             return _response;
         }
         #endregion

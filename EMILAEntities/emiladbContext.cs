@@ -735,12 +735,12 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NeedEn)
-                    .HasMaxLength(150)
+                    .HasMaxLength(600)
                     .HasColumnName("need_en")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NeedSp)
-                    .HasMaxLength(150)
+                    .HasMaxLength(600)
                     .HasColumnName("need_sp")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1107,12 +1107,12 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NeedEn)
-                    .HasMaxLength(150)
+                    .HasMaxLength(600)
                     .HasColumnName("need_en")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NeedSp)
-                    .HasMaxLength(150)
+                    .HasMaxLength(600)
                     .HasColumnName("need_sp")
                     .HasDefaultValueSql("'NULL'");
 
@@ -1423,12 +1423,12 @@ namespace WebApi.EMILAEntities
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NeedEn)
-                    .HasMaxLength(150)
+                    .HasMaxLength(600)
                     .HasColumnName("need_en")
                     .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.NeedSp)
-                    .HasMaxLength(150)
+                    .HasMaxLength(600)
                     .HasColumnName("need_sp")
                     .HasDefaultValueSql("'NULL'");
 

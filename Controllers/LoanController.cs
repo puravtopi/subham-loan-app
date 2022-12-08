@@ -132,10 +132,57 @@ namespace WebApi.Controllers
             return Ok(_result);
         }
 
+        [HttpPost("add-task")]
+        public IActionResult AddTask(LoanTasksVM model)
+        {
+            var _result = _loanService.AddTask(model);
+            return Ok(_result);
+        }
+
+
+        [HttpPost("edit-task")]
+        public IActionResult EditTask(int loanId)
+        {
+            var _result = _loanService.EditTask(loanId);
+            return Ok(_result);
+        }
+
+
+        [HttpPost("Update-task")]
+        public IActionResult UpdateTask(LoanTasksVM model)
+        {
+            var _result = _loanService.UpdateTask(model);
+            return Ok(_result);
+        }
+
+
         [HttpPost("get-loan-need")]
         public IActionResult getLoanNeed(int loanId)
         {
             var _result = _loanService.GetAllNeeds(loanId);
+            return Ok(_result);
+        }
+
+        [HttpPost("add-Needs")]
+        public IActionResult AddNeeds(LoanNeedVM model)
+        {
+            var _result = _loanService.AddNeeds(model);
+            return Ok(_result);
+        }
+
+
+        [HttpPost("edit-Needs")]
+        public IActionResult EditNeeds(int loanId)
+        {
+            var _result = _loanService.EditNeeds(loanId);
+            return Ok(_result);
+        }
+
+
+        [HttpPost("update-Needs")]
+        public IActionResult UpdateNeeds(LoanNeedVM model)
+        {
+            var _result = _loanService.UpdateNeeds(model);
             return Ok(_result);
         }
         #endregion

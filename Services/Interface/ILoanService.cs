@@ -37,7 +37,16 @@ namespace WebApi.Services.Interface
 
         ServiceResponse<List<LoanTasksVM>> GetAllTask(int loanId);
 
+        ServiceResponse<LoanTasksVM> AddTask(LoanTasksVM model);
+        ServiceResponse<LoanTasksVM> EditTask(int LoanId);
+        ServiceResponse<LoanTasksVM> UpdateTask(LoanTasksVM model);
+
+
         ServiceResponse<List<LoanNeedVM>> GetAllNeeds(int loanId);
+
+        ServiceResponse<LoanNeedVM> AddNeeds(LoanNeedVM model);
+        ServiceResponse<LoanNeedVM> EditNeeds(int LoanId);
+        ServiceResponse<LoanNeedVM> UpdateNeeds(LoanNeedVM model);
 
         #endregion
     }
