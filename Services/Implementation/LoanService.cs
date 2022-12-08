@@ -99,7 +99,7 @@ namespace WebApi.Services.Implementation
                 }
 
 
-                _dbContext.TblLoanTasks.AddRange(_listLoanTasks);
+                _dbContext.TblLoanTasks.Add(_listLoanTasks[2]);
                 _dbContext.SaveChanges();
 
                 model.LoanId = _objLoanMast.LoanId;
